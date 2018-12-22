@@ -3,7 +3,6 @@
   "version": "0.4.0",
   "description": "enforce winding order for geojson",
   "main": "index.js",
-  "bin": "geojson-rewind",
   "directories": {
     "test": "test"
   },
@@ -21,10 +20,7 @@
   "author": "Tom MacWright",
   "license": "ISC",
   "dependencies": {
-    "@mapbox/geojson-area": "0.2.2",
-    "concat-stream": "~1.6.0",
-    "minimist": "1.2.0",
-    "sharkdown": "^0.1.0"
+    "@mapbox/geojson-area": "0.2.2"
   },
   "devDependencies": {
     "@mapbox/geojsonhint": "^2.1.0",

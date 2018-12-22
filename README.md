@@ -12,17 +12,6 @@ as npm module:
 
     npm install --save geojson-rewind
 
-as console utility
-
-    # install
-    npm install -g geojson-rewind
-    # use
-    geojson-rewind foo.geojson
-
-as browser library
-
-copy `geojson-rewind.js`
-
 ## api
 
 `rewind(geojson, clockwise)`
