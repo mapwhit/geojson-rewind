@@ -1,14 +1,16 @@
-var geojsonArea = require('@mapwhit/geojson-area');
+const geojsonArea = require('@mapwhit/geojson-area');
 
-module.exports = rewind;
+module.exports = function(gj, outer) {
+    return rewind(gj, !!outer);
+};
 
 function rewind(gj, outer) {
-    switch ((gj && gj.type) || null) {
+    switch (gj && gj.type) {
         case 'FeatureCollection':
-            gj.features = gj.features.map(curryOuter(rewind, outer));
+            gj.features = gj.features.map(f => rewind(f, outer));
             return gj;
         case 'GeometryCollection':
-            gj.geometries = gj.geometries.map(curryOuter(rewind, outer));
+            gj.geometries = gj.geometries.map(g => rewind(g, outer));
             return gj;
         case 'Feature':
             gj.geometry = rewind(gj.geometry, outer);
@@ -21,32 +23,23 @@ function rewind(gj, outer) {
     }
 }
 
-function curryOuter(a, b) {
-    return function(_) { return a(_, b); };
-}
-
 function correct(_, outer) {
     if (_.type === 'Polygon') {
         _.coordinates = correctRings(_.coordinates, outer);
     } else if (_.type === 'MultiPolygon') {
-        _.coordinates = _.coordinates.map(curryOuter(correctRings, outer));
+        _.coordinates = _.coordinates.map(r => correctRings(r, outer));
     }
     return _;
 }
 
 function correctRings(_, outer) {
-    outer = !!outer;
     _[0] = wind(_[0], outer);
-    for (var i = 1; i < _.length; i++) {
+    for (let i = 1; i < _.length; i++) {
         _[i] = wind(_[i], !outer);
     }
     return _;
 }
 
 function wind(_, dir) {
-    return cw(_) === dir ? _ : _.reverse();
-}
-
-function cw(_) {
-    return geojsonArea.ring(_) >= 0;
+    return geojsonArea.ring(_) >= 0 === dir ? _ : _.reverse();
 }
