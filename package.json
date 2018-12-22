@@ -20,7 +20,7 @@
   "author": "Tom MacWright",
   "license": "ISC",
   "dependencies": {
-    "@mapbox/geojson-area": "0.2.2"
+    "@mapwhit/geojson-area": "^1.0.0"
   },
   "devDependencies": {
     "@mapbox/geojsonhint": "^2.1.0",

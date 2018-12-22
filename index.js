@@ -1,4 +1,4 @@
-var geojsonArea = require('@mapbox/geojson-area');
+var geojsonArea = require('@mapwhit/geojson-area');
 
 module.exports = rewind;
 
