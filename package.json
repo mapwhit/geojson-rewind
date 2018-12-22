@@ -1,5 +1,5 @@
 {
-  "name": "@mapbox/geojson-rewind",
+  "name": "@mapwhit/geojson-rewind",
   "version": "0.4.0",
   "description": "enforce winding order for geojson",
   "main": "index.js",
@@ -10,10 +10,7 @@
   "scripts": {
     "test": "tape test/rewind.js"
   },
-  "repository": {
-    "type": "git",
-    "url": "git://github.com/mapbox/geojson-rewind.git"
-  },
+  "repository": "mapwhit/geojson-rewind",
   "keywords": [
     "geojson",
     "winding",
@@ -23,10 +20,6 @@
   ],
   "author": "Tom MacWright",
   "license": "ISC",
-  "bugs": {
-    "url": "https://github.com/mapbox/geojson-rewind/issues"
-  },
-  "homepage": "https://github.com/mapbox/geojson-rewind",
   "dependencies": {
     "@mapbox/geojson-area": "0.2.2",
     "concat-stream": "~1.6.0",
@@ -35,12 +28,9 @@
   },
   "devDependencies": {
     "@mapbox/geojsonhint": "^2.1.0",
-    "cz-conventional-changelog": "^2.0.0",
     "tape": "^4.8.0"
   },
-  "config": {
-    "commitizen": {
-      "path": "./node_modules/cz-conventional-changelog"
-    }
-  }
+  "files": [
+    "index.js"
+  ]
 }
