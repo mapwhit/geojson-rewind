@@ -7,9 +7,12 @@
     "test": "test"
   },
   "scripts": {
-    "test": "tape test/rewind.js"
+    "test": "make check"
   },
-  "repository": "mapwhit/geojson-rewind",
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/mapwhit/geojson-rewind.git"
+  },
   "keywords": [
     "geojson",
     "winding",
@@ -23,9 +26,7 @@
     "@mapwhit/geojson-area": "^1.0.0"
   },
   "devDependencies": {
-    "@biomejs/biome": "2.2.0",
-    "@mapbox/geojsonhint": "^2.1.0",
-    "tape": "^4.8.0"
+    "@biomejs/biome": "2.2.0"
   },
   "files": [
     "index.js"

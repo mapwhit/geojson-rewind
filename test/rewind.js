@@ -1,7 +1,7 @@
-const rewind = require('../');
+const test = require('node:test');
 const fs = require('node:fs');
-const test = require('tape');
-const { hint } = require('@mapbox/geojsonhint');
+
+const rewind = require('../');
 
 function f(_) {
   return JSON.parse(fs.readFileSync(_, 'utf8'));
@@ -12,18 +12,8 @@ function fixture(t, file, title) {
   const outputName = name.replace('.input.', '.output.');
 
   const result = rewind(f(name));
-
-  if (process.env.UPDATE) {
-    const errors = hint(result);
-    if (errors.length) {
-      errors.forEach(({ line, message, level }) => t.fail(`${outputName}line ${line} - ${message} - ${level}`));
-    } else {
-      fs.writeFileSync(outputName, JSON.stringify(result, null, 4));
-    }
-  }
-
   const expect = f(outputName);
-  t.deepEqual(result, expect, title);
+  t.assert.deepEqual(result, expect, title);
 }
 
 test('rewind', t => {
@@ -33,10 +23,8 @@ test('rewind', t => {
   fixture(t, 'geomcollection', 'geometry-collection');
   fixture(t, 'multipolygon', 'multipolygon');
   fixture(t, 'rev', 'rev');
-  t.end();
 });
 
 test('passthrough', t => {
-  t.equal(rewind(null), null);
-  t.end();
+  t.assert.equal(rewind(null), null);
 });
