@@ -2,10 +2,8 @@
   "name": "@mapwhit/geojson-rewind",
   "version": "1.0.0",
   "description": "enforce winding order for geojson",
-  "main": "index.js",
-  "directories": {
-    "test": "test"
-  },
+  "type": "module",
+  "exports": "./index.js",
   "scripts": {
     "test": "make check"
   },
@@ -23,7 +21,7 @@
   "author": "Tom MacWright",
   "license": "ISC",
   "dependencies": {
-    "@mapwhit/geojson-area": "^1.0.0"
+    "@mapwhit/geojson-area": "~2"
   },
   "devDependencies": {
     "@biomejs/biome": "2.2.0"

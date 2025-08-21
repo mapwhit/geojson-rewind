@@ -1,14 +1,13 @@
-const test = require('node:test');
-const fs = require('node:fs');
-
-const rewind = require('../');
+import fs from 'node:fs';
+import test from 'node:test';
+import rewind from '../index.js';
 
 function f(_) {
   return JSON.parse(fs.readFileSync(_, 'utf8'));
 }
 
 function fixture(t, file, title) {
-  const name = `${__dirname}/fixture/${file}.input.geojson`;
+  const name = `${import.meta.dirname}/fixture/${file}.input.geojson`;
   const outputName = name.replace('.input.', '.output.');
 
   const result = rewind(f(name));

@@ -1,8 +1,6 @@
-const geojsonArea = require('@mapwhit/geojson-area');
+import { ring } from '@mapwhit/geojson-area';
 
-module.exports = rewind;
-
-function rewind(gj, outer = false) {
+export default function rewind(gj, outer = false) {
   switch (gj?.type) {
     case 'FeatureCollection':
       gj.features = gj.features.map(f => rewind(f, outer));
@@ -39,5 +37,5 @@ function correctRings(_, outer) {
 }
 
 function wind(_, dir) {
-  return geojsonArea.ring(_) >= 0 === dir ? _ : _.reverse();
+  return ring(_) >= 0 === dir ? _ : _.reverse();
 }
