@@ -23,6 +23,7 @@
     "@mapwhit/geojson-area": "^1.0.0"
   },
   "devDependencies": {
+    "@biomejs/biome": "2.2.0",
     "@mapbox/geojsonhint": "^2.1.0",
     "tape": "^4.8.0"
   },
